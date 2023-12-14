@@ -12,7 +12,7 @@ const Navbar = () => {
                         Shopi
                     </NavLink>
                 </li>
-                <li>
+                <li className="hidden md:block">
                     <NavLink 
                         to='/all'
                         className={({ isActive })=>
@@ -21,7 +21,7 @@ const Navbar = () => {
                         All
                     </NavLink>
                 </li>
-                <li>
+                <li className="hidden md:block">
                     <NavLink 
                         to='/clothes'
                         className={({ isActive })=>
@@ -30,7 +30,7 @@ const Navbar = () => {
                         Clothes
                     </NavLink>
                 </li>
-                <li>
+                <li className="hidden md:block">
                     <NavLink 
                         to='/electronics'
                         className={({ isActive })=>
@@ -39,7 +39,7 @@ const Navbar = () => {
                         Electronics
                     </NavLink>
                 </li>
-                <li>
+                <li className="hidden md:block">
                     <NavLink 
                         to='/furniture'
                         className={({ isActive })=>
@@ -48,7 +48,7 @@ const Navbar = () => {
                         Furniture
                     </NavLink>
                 </li>
-                <li>
+                <li className="hidden md:block">
                     <NavLink 
                         to='/toys'
                         className={({ isActive })=>
@@ -57,7 +57,7 @@ const Navbar = () => {
                         Toys
                     </NavLink>
                 </li>
-                <li>
+                <li className="hidden md:block">
                     <NavLink 
                         to='/others'
                         className={({ isActive })=>
@@ -72,7 +72,7 @@ const Navbar = () => {
                 <li className="text-white/60">
                         jalbores339@gmail.com
                 </li>
-                <li>
+                <li className="hidden lg:block">
                     <NavLink 
                         to='/my-orders'
                         className={({ isActive })=>
@@ -81,7 +81,7 @@ const Navbar = () => {
                         My Orders
                     </NavLink>
                 </li>
-                <li>
+                <li className="hidden lg:block">
                     <NavLink 
                         to='/my-account'
                         className={({ isActive })=>
@@ -90,7 +90,7 @@ const Navbar = () => {
                         My Account
                     </NavLink>
                 </li>
-                <li>
+                <li className="hidden lg:block">
                     <NavLink 
                         to='/sign-in'
                         className={({ isActive })=>
