@@ -27,13 +27,13 @@ const AppRoutes = () => {
 
 const App = () => {
   return (
-    <ShopingCartContext.Provider>
+    <ShopingCartProvider>
     <BrowserRouter>
       <AppRoutes/>
       <Navbar />
       <Footer />
     </BrowserRouter>
-    </ShopingCartContext.Provider>
+    </ShopingCartProvider>
     )
 }
 
