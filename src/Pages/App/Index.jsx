@@ -28,11 +28,11 @@ const AppRoutes = () => {
 const App = () => {
   return (
     <ShopingCartProvider>
-    <BrowserRouter>
-      <AppRoutes/>
-      <Navbar />
-      <Footer />
-    </BrowserRouter>
+      <BrowserRouter>
+        <AppRoutes/>
+        <Navbar />
+        <Footer />
+      </BrowserRouter>
     </ShopingCartProvider>
     )
 }
