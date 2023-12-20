@@ -7,8 +7,10 @@ import MyOrders from '../MyOrders'
 import NotFound from '../NotFound'
 import SignIn from '../SignIn'
 import Navbar from '../../Components/Navbar'
+import ProductDetail from '../../Components/ProductDetail'
 import Footer from '../../Components/Footer'
 import './App.css'
+import CheckoutSideMenu from '../../Components/CheckoutSideMenu'
 
 
 const AppRoutes = () => {
@@ -18,7 +20,8 @@ const AppRoutes = () => {
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/not-Found', element: <NotFound /> },
-    { path: '/sign-in', element: <SignIn/> }
+    { path: '/sign-in', element: <SignIn/> },
+    { path: '/product-detail', element: <ProductDetail/> }
   ])
 
   return routes
@@ -31,6 +34,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes/>
         <Navbar />
+        <CheckoutSideMenu />
         <Footer />
       </BrowserRouter>
     </ShopingCartProvider>

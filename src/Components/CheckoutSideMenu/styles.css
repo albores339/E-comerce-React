@@ -1,0 +1,11 @@
+.checkout-side-menu {
+    width: 360px;
+    height: 100vh;
+    top: 48px;
+  }
+
+@media (max-width: 540px) { 
+    .checkout-side-menu {
+        width: 100%;
+    }
+}
