@@ -103,7 +103,7 @@ const Navbar = () => {
                         Sing In
                     </NavLink>
                 </li>
-                <li className="flex flex-row items-center">
+                <li className={`${context.isCheckoutSideMenuOpen ? " " : "animate-pulse "}flex flex-row items-center cursor-pointer`} onClick={context.openCheckoutSideMenu}>
                     <ShoppingCartIcon class="h-6 w-6 text-white mx-1" />{context.count}
                 </li>
             </ul>

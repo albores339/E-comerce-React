@@ -1,6 +1,6 @@
 const Hero = () => {
     return (
-        <div className="flex flex-col text-stone-700 md:flex-row lg:flex-row bg-stone-200 md:h-96">
+        <div className="flex flex-col text-stone-700 md:flex-row lg:flex-row bg-stone-100 md:h-96">
         <figure className="flex w-full   object-cover h-96 md:h-full">
           <img className="w-full object-cover" src="https://boosterfashion.myshopify.com/cdn/shop/files/20220215-_Coleccion_Denim_768x.jpg?v=1676271314" alt="" />
         </figure>

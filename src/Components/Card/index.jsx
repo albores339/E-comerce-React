@@ -1,7 +1,7 @@
 import { useContext } from "react"
-import { PlusIcon } from "@heroicons/react/24/solid"
+import { CheckCircleIcon, StarIcon } from "@heroicons/react/24/solid"
 import { ShopingCartContext } from "../../Context"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const Card = ( data ) => {
     const context = useContext(ShopingCartContext)
@@ -11,24 +11,27 @@ const Card = ( data ) => {
         context.setProductToShow(productDetail)
     }
 
-    const addProductsToCart = (event, productAdd) => {
-        event.stopPropagation()
-        context.setCount(context.count + 1)
-        context.setCartProducts([...context.cartProducts, productAdd])
-        context.openCheckoutSideMenu()
-        context.closeProductDetail()
-        console.log("CART", context.cartProducts)
+    const renderIcon = (data) => {
+        const isInCart = context.cartProducts.filter(product => product.id === data.id).length > 0
+        if (isInCart) {
+            return(
+                <div className="absolute top-0 right-0 flex justify-center items-center m-2 text-cyan-500"
+                ><CheckCircleIcon className="bg-stone-100 rounded-full h-8 w-8"/></div> 
+            )
+        } else {
+            return(
+                <div className="absolute top-0 right-0 flex justify-center items-center m-2 bg-lime-500 bg-gradient-to-r from-lime-400 to-lime-500 hover:from-cyan-400 hover:to-cyan-600 text-white text-sm rounded-lg p-1"
+                >{data.rating.rate}<StarIcon className="w-3 h-3"/></div> 
+            )
+
+        }
     }
-    
+
     const shortDescription = (data) => data.title.split(" ").length > 5 ? `${data.title.split(" ").slice(0, 4).join(" ")}...`
         : data.title
     
-    
-    
-    
-
     return (
-        <NavLink
+        <Link
         to="/product-detail">
              <div 
         className="shadow-lg bg-gradient-to-r from-cyan-100 cursor-pointer w-full h-72 md:h-56 rounded-lg my-6"
@@ -36,17 +39,16 @@ const Card = ( data ) => {
             <figure className="flex justify-center center relative mb-1 w-full h-3/4 bg-white">
                 <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-sm m-2 px-3 py-5.5 font-light">{data.category}</span>
                 <img className="h-full object-cover rounded-lg" src={data.image} alt="headphones" />
-                <div className="absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full m-2 bg-lime-500 bg-gradient-to-r from-lime-400 to-lime-500 hover:from-pink-400 hover:to-pink-600 text-white font-bold"
-                onClick={(event) => addProductsToCart(event, data)}><PlusIcon/></div> 
+                {renderIcon(data)}
             </figure>
 
             <p className="flex items-center justify-between px-2 py-1">
-                <span className="text-sm font-light text-black">{shortDescription(data)}
+                <span className="text-sm text-stone-700 font-normal">{shortDescription(data)}
                 </span>
-                <span className="text-xs font-bold text-lime-500 m-1">${data.price}</span>
+                <span className="text-sm font-bold text-lime-500 m-1">${data.price}</span>
             </p>
         </div>
-        </NavLink>
+        </Link>
     )
 }
 

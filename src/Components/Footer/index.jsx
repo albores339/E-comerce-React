@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <footer className="w-full bg-stone-200 text-stone-600 flex flex-col justify-between text-sm items-start">
+        <footer className="w-full md:absolute bg-stone-100 text-stone-600 flex flex-col justify-between text-sm items-start bottom-0">
             <div className="w-full flex flex-col md:flex-row items-start justify-between p-10">
             <div className="flex flex-col">
                 <p className="font-bold m-2 text-lg">About Us</p>
