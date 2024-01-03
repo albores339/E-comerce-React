@@ -20,7 +20,7 @@ const Card = ( data ) => {
             )
         } else {
             return(
-                <div className="absolute top-0 right-0 flex justify-center items-center m-2 bg-lime-500 bg-gradient-to-r from-lime-400 to-lime-500 hover:from-cyan-400 hover:to-cyan-600 text-white text-sm rounded-lg p-1"
+                <div className="absolute top-0 right-0 flex justify-center items-center m-2 bg-lime-500 bg-gradient-to-r from-lime-400 to-lime-500 hover:from-sky-400 hover:to-sky-500 text-white text-sm rounded-lg p-1"
                 >{data.rating.rate}<StarIcon className="w-3 h-3"/></div> 
             )
 
@@ -34,7 +34,7 @@ const Card = ( data ) => {
         <Link
         to="/product-detail">
              <div 
-        className="shadow-lg bg-gradient-to-r from-cyan-100 cursor-pointer w-full h-72 md:h-56 rounded-lg my-6"
+        className="shadow-md cursor-pointer w-full h-72 md:h-56 rounded-lg my-6"
         onClick={() => showProduct(data)}>
             <figure className="flex justify-center center relative mb-1 w-full h-3/4 bg-white">
                 <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-sm m-2 px-3 py-5.5 font-light">{data.category}</span>
@@ -45,7 +45,7 @@ const Card = ( data ) => {
             <p className="flex items-center justify-between px-2 py-1">
                 <span className="text-sm text-stone-700 font-normal">{shortDescription(data)}
                 </span>
-                <span className="text-sm font-bold text-lime-500 m-1">${data.price}</span>
+                <span className="text-md font-bold text-lime-500 m-1">${data.price}</span>
             </p>
         </div>
         </Link>

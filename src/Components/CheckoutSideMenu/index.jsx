@@ -11,16 +11,9 @@ const CheckoutSideMenu = () => {
     const context = useContext(ShopingCartContext)
     
     const handleDelete = (index) => {        
-        // Copiamos el array original para no modificarlo directamente
         const updatedCartProducts = [...context.cartProducts];
-        
-        // Eliminamos el elemento en la posición index del array copiado
         updatedCartProducts.splice(index, 1);
-        
-        // Actualizamos el contexto con el nuevo array
         context.setCartProducts(updatedCartProducts);
-        
-        // Actualizamos la cuenta en base al nuevo tamaño del array
         context.setCount(updatedCartProducts.length);
     };
 
@@ -35,11 +28,12 @@ const CheckoutSideMenu = () => {
         context.setOrder([...context.order, orderToAdd])
         context.setCartProducts([])
         context.setCount(0)
+        context.closeCheckoutSideMenu()
     }
 
     return (
         <aside 
-        className={`${context.isCheckoutSideMenuOpen ? "flex" : "hidden"} checkout-side-menu flex-col fixed right-0 bg-white border border-lime-500 rounded-lg text-stone-700 z-10`}
+        className={`${context.isCheckoutSideMenuOpen ? "flex" : "hidden"} checkout-side-menu flex-col fixed right-0 bg-white border border-sky-400 rounded-lg text-stone-700 z-10`}
         >
             <div className="flex justify-between items-center p-3">
                 <h2 className="font-medium text-md ">My Order</h2>

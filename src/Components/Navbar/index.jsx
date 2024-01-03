@@ -8,7 +8,7 @@ const Navbar = () => {
     const activeStyle = "underline underline-offset-4"
     
     return (
-        <nav className="bg-gradient-to-r from-cyan-500/90 to-lime-500/90 backdrop-blur-md text-white flex justify-between items-center fixed z-10 top-0 w-full py-2.5 px-8 text-sm font-light">
+        <nav className="bg-sky-500/90 backdrop-blur-md text-white flex justify-between items-center fixed z-10 top-0 w-full py-2.5 px-8 text-sm font-light">
             <ul className="flex items-center gap-3">
                 <li className="font-semibold text-lg">
                     <NavLink 
