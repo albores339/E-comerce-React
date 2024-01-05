@@ -45,7 +45,7 @@ const Navbar = () => {
                 </li>
                 <li className="hidden sm:block">
                     <NavLink 
-                        to='/jewerly'
+                        to='/jewelery'
                         className={({ isActive })=>
                                 isActive ? activeStyle : undefined
                         } 
@@ -64,7 +64,8 @@ const Navbar = () => {
                         to='/my-orders'
                         className={({ isActive })=>
                             isActive ? activeStyle : undefined
-                        } >
+                        } 
+                        onClick={context.handleScrollToTo}>
                         <p className="flex items-center gap-1">
                             <CubeIcon className="h-4 w-4 text-white" mx-1 /> My Orders
                         </p>
@@ -75,7 +76,8 @@ const Navbar = () => {
                         to='/my-account'
                         className={({ isActive })=>
                             isActive ? activeStyle : undefined
-                        } >
+                        } 
+                        onClick={context.handleScrollToTo}>
                         <p className="flex items-center gap-1">
                             <CogIcon className="h-4 w-4 text-white" mx-1 /> My Account
                         </p>
@@ -87,7 +89,8 @@ const Navbar = () => {
                         to='/sign-in'
                         className={({ isActive })=>
                             isActive ? activeStyle : undefined
-                        } >
+                        } 
+                        onClick={context.handleScrollToTo}>
                         Sing In
                     </NavLink>
                 </li>

@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ShopingCartContext = createContext()
 
@@ -106,7 +107,10 @@ export const ShopingCartProvider = ({children}) => {
     // Shopping Cart - Order
     const [order, setOrder] = useState([])
 
-
+    const handleScrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+  
     return(
         <ShopingCartContext.Provider value={{count,
         setCount,
@@ -136,7 +140,8 @@ export const ShopingCartProvider = ({children}) => {
         isMobileMenuOpen,
         setIsMobileMenuOpen,
         openMobileMenu,
-        closeMobileMenu
+        closeMobileMenu,
+        handleScrollToTop
         }}>
         {children}
         </ShopingCartContext.Provider>

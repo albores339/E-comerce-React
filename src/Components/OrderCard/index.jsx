@@ -5,7 +5,7 @@ const OrderCard = props => {
     const { title, imageUrl, price, handleDelete, index } = props
     let renderMinusCircleIcon
         if (handleDelete){
-            renderMinusCircleIcon =  <MinusCircleIcon onClick={() => handleDelete(index)} className="text-red-500 h-8 w-8 absolute right-1 top-1 cursor-pointer"/>
+            renderMinusCircleIcon =  <MinusCircleIcon onClick={() => {context.handleScrollToTo; handleDelete(index)}} className="text-red-500 h-8 w-8 absolute right-1 top-1 cursor-pointer"/>
         }
     
 

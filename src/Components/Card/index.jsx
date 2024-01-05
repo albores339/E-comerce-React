@@ -36,7 +36,7 @@ const Card = ( data ) => {
         to="/product-detail">
              <div 
         className="shadow-md cursor-pointer w-full h-72 md:h-56 rounded-lg my-6"
-        onClick={() => showProduct(data)}>
+        onClick={() => {context.handleScrollToTop(); showProduct(data)}}>
             <figure className="flex justify-center center relative mb-1 w-full h-3/4 bg-white">
                 <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-sm m-2 px-3 py-5.5 font-light">{data.category}</span>
                 <img className="h-full object-cover rounded-lg" src={data.image} alt="headphones" />

@@ -10,7 +10,7 @@ const Categories = () => {
             <NavLink 
             to='/clothes'
             className="relative"
-            onClick={() => context.setSearchByCategory("men's clothing")} >
+            onClick={() => {context.handleScrollToTop(); context.setSearchByCategory("men's clothing")}} >
                 <figure className="w-full">
                 <img className="h-full object-cover" src="https://boosterfashion.myshopify.com/cdn/shop/collections/teen_520x.png?v=1676277656" alt="" />
                 <p className="absolute left-2 bottom-2 text-white text-4xl font-semibold">
@@ -20,9 +20,9 @@ const Categories = () => {
             </NavLink>
             
             <NavLink 
-            to='/clothes'
+            to='/electronics'
             className="relative"
-            onClick={() => context.setSearchByCategory("electronics")} >
+            onClick={() => {context.handleScrollToTop(); context.setSearchByCategory("electronics")}} >
                 <figure className="sm:h-full">
                 <img className="h-full object-cover" src="https://cdn.pixabay.com/photo/2022/10/09/12/41/dji-mini-7509051_640.jpg" alt="" />
                 </figure>
@@ -32,9 +32,9 @@ const Categories = () => {
             </NavLink>
 
             <NavLink 
-            to='/clothes'
+            to='/jewelery'
             className="relative"
-            onClick={() => context.setSearchByCategory("jewelery")} >
+            onClick={() => {context.handleScrollToTop(); context.setSearchByCategory("jewelery")}} >
                 <figure className="sm:h-full">
                 <img className="h-full object-cover" src="https://cdn.pixabay.com/photo/2016/02/02/15/54/jewellery-1175530_1280.jpg" alt="" />
                 </figure>

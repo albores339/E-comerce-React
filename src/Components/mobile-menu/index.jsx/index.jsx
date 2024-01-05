@@ -17,7 +17,7 @@ const MobileMenu = () => {
                         className={({ isActive })=>
                             isActive ? activeStyle : undefined
                         }
-                        onClick={() => {context.setSearchByCategory("men's clothing"), context.closeMobileMenu()}} >
+                        onClick={() => {context.handleScrollToTo, context.setSearchByCategory("men's clothing"), context.closeMobileMenu()}} >
                         Clothes
                     </NavLink>
                 </li>
@@ -27,7 +27,7 @@ const MobileMenu = () => {
                         className={({ isActive })=>
                                 isActive ? activeStyle : undefined
                         } 
-                        onClick={() => {context.setSearchByCategory("electronics"), context.closeMobileMenu()}}>
+                        onClick={() => {context.handleScrollToTo, context.setSearchByCategory("electronics"), context.closeMobileMenu()}}>
                         Electronics
                     </NavLink>
                 </li>
@@ -37,7 +37,7 @@ const MobileMenu = () => {
                         className={({ isActive })=>
                                 isActive ? activeStyle : undefined
                         } 
-                        onClick={() => {context.setSearchByCategory("jewelery"), context.closeMobileMenu()}}>
+                        onClick={() => {context.handleScrollToTo, context.setSearchByCategory("jewelery"), context.closeMobileMenu()}}>
                         Jewerly
                     </NavLink>
                 </li>
@@ -67,14 +67,14 @@ const MobileMenu = () => {
                         className={({ isActive })=>
                             isActive ? activeStyle : undefined
                         } 
-                        onClick={context.closeMobileMenu}>
+                        onClick={() => {context.handleScrollToTo, context.closeMobileMenu}}>
                         <p className="flex items-center gap-1">
                             <CogIcon className="h-6 w-6 text-white" mx-1 /> My Account
                         </p>
                     </NavLink>
                 </li>
                 <li className=""
-                onClick={context.closeMobileMenu}>
+                onClick={() => {context.handleScrollToTo, context.closeMobileMenu}}>
                     <NavLink 
                         to='/sign-in'
                         className={({ isActive })=>
