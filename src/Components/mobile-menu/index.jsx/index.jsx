@@ -33,12 +33,12 @@ const MobileMenu = () => {
                 </li>
                 <li className="">
                     <NavLink 
-                        to='/jewerly'
+                        to='/jewelery'
                         className={({ isActive })=>
                                 isActive ? activeStyle : undefined
                         } 
                         onClick={() => {context.handleScrollToTo, context.setSearchByCategory("jewelery"), context.closeMobileMenu()}}>
-                        Jewerly
+                        Jewelery
                     </NavLink>
                 </li>
             </ul>
