@@ -1,24 +1,53 @@
 import { useContext } from "react"
 import { NavLink } from "react-router-dom"
-import { StarIcon, UserIcon, ChevronLeftIcon } from "@heroicons/react/24/solid"
+import { StarIcon, UserIcon, ChevronLeftIcon, TruckIcon } from "@heroicons/react/24/solid"
 import { ShopingCartContext } from "../../Context"
 import Layout from "../Layout"
+import "./styles.css"
 
 const ProductDetail = () => {
 const context = useContext(ShopingCartContext)
-    console.log("Product to show: ", context.productToShow)
 
 const addProductsToCart = (productAdd) => {
-    context.setCount(context.count + 1)
     context.setCartProducts([...context.cartProducts, productAdd])
     context.openCheckoutSideMenu()
-    console.log("CART", context.cartProducts)
+    }
+    
+    const renderStars = () =>{
+        if (Math.floor(parseInt(context.productToShow.rating.rate)) === 5){
+        return (
+            <span className="flex flex-row items-center text-stone-600 gap-1">
+                {context.productToShow.rating.rate} <StarIcon className="h-4 w-4 "/> <StarIcon className="h-4 w-4 "/> <StarIcon className="h-4 w-4 "/> <StarIcon className="h-4 w-4 "/> <StarIcon className="h-4 w-4 "/> 
+            </span>
+            
+        )
+    } if(Math.floor(parseInt(context.productToShow.rating.rate)) === 4){
+        return(
+            <p className="flex flex-row items-center text-stone-600 gap-1">
+                    <span className="text-stone-700">{context.productToShow.rating.rate}</span> <StarIcon className="h-4 w-4 "/> <StarIcon className="h-4 w-4 "/> <StarIcon className="h-4 w-4 "/> <StarIcon className="h-4 w-4 "/>
+            </p>)
+    } if(Math.floor(parseInt(context.productToShow.rating.rate)) === 3){
+        return(
+            <p className="flex flex-row items-center text-stone-600 gap-1">
+                    <span className="text-stone-700">{context.productToShow.rating.rate}</span> <StarIcon className="h-4 w-4 "/> <StarIcon className="h-4 w-4 "/> <StarIcon className="h-4 w-4 "/>
+            </p>)
+    } if(Math.floor(parseInt(context.productToShow.rating.rate)) === 2){
+        return(
+            <p className="flex flex-row items-center text-stone-600 gap-1">
+                    <span className="text-stone-700">{context.productToShow.rating.rate}</span> <StarIcon className="h-4 w-4 "/> <StarIcon className="h-4 w-4 "/>
+            </p>)
+    } if(Math.floor(parseInt(context.productToShow.rating.rate)) === 1){
+        return(
+            <p className="flex flex-row items-center text-stone-600 gap-1">
+                    <span className="text-stone-600">{context.productToShow.rating.rate}</span> <StarIcon className="h-4 w-4 "/> 
+            </p>)
+    }
     }
 
     return (
         <Layout>
             <div 
-            className="flex-col max-w-screen-lg mt-3 text-stone-700"
+            className="flex-col max-w-screen-lg mt-2 text-stone-700 sm:mb-56"
             >
                 <div className="flex justify-between items-center p-6 font-normal">
                     <h2>Product Detail</h2>
@@ -30,21 +59,33 @@ const addProductsToCart = (productAdd) => {
                     
             </div>
 
-            <div className="flex flex-col md:flex-row items-center justify-between text-stone-700">
-                <figure className="p-8 w-96">
+            <div className="flex flex-col md:flex-row items-center md:items-start justify-between text-stone-700">
+                <figure className="p-10 w-96">
                     <img className="w-full object-cover rounded-lg" src={context.productToShow.image} alt={context.productToShow.title} />
                 </figure>
 
-                <p className="flex flex-col object-center font-normal mx-8 mb-8 w-4/5 md:w-3/5 gap-3">
+                <p className="flex flex-col object-center font-normal mx-8 mb-8 w-4/5 md:w-3/5 gap-2">
                     <span className="font-bold text-4xl">{context.productToShow.title}</span>
                     <div className="flex flex-row">
-                        <span className="flex flex-row items-center">{context.productToShow.rating.rate} <StarIcon className="h-4 w-4 "/></span>
-                        <span className="mx-4  flex flex-row items-center">{context.productToShow.rating.count} <UserIcon className="h-4 w-4 "/></span>
-                    </div>                    
+                        {renderStars()}
+                        <span className="mx-4  flex flex-row items-center gap-1">{context.productToShow.rating.count} <UserIcon className="h-4 w-4 text-stone-700"/></span>
+                    </div>             
                     <span className="text-lime-500 font-bold text-3xl">$ {context.productToShow.price}</span>
-                    <button className="bg-lime-500 rounded-lg text-white animate-bounce p-1" onClick={() => addProductsToCart(context.productToShow)}>Add to Cart</button>
-                    <button className="bg-lime-500 rounded-lg text-white p-1">Buy Now</button>
+                    <p className="flex gap-3 items-center">
+                        <span>
+                            <TruckIcon className="w-6 h-6" />
+                        </span>
+                         <span>
+                            Free Shipping
+                        </span>
+                    </p>       
+                    <p className="">
+                        <span className="animate-pulse font-bold text-red-500">{context.left}</span>
+                        <span> Left in the stock</span>
+                    </p>
+                    <button className="bg-lime-500 rounded-lg text-white shaky-button p-1 my-2" onClick={() => addProductsToCart(context.productToShow)}>Add to Cart</button>
                     <img className="w-96" src="https://boosterfashion.myshopify.com/cdn/shop/files/trust-badge_560x.png?v=1676354680" alt="guarantee" />
+                    <span className="font-bold">Product Description</span>
                     <span className="text-sm">{context.productToShow.description}</span>
                     <div className="gap-2">
                         <span className="font-bold p-2">TAGS:</span>

@@ -7,7 +7,9 @@ import MyOrders from '../MyOrders'
 import NotFound from '../NotFound'
 import SignIn from '../SignIn'
 import Navbar from '../../Components/Navbar'
+import MobileMenu from '../../Components/mobile-menu/index.jsx'
 import ProductDetail from '../../Components/ProductDetail'
+import Floating from '../../Components/Floating/index.jsx'
 import Footer from '../../Components/Footer'
 import CheckoutSideMenu from '../../Components/CheckoutSideMenu'
 import './App.css'
@@ -15,6 +17,9 @@ import './App.css'
 const AppRoutes = () => {
   let routes = useRoutes([
     { path: '/', element: <Home /> },
+    { path: '/clothes', element: <Home /> },
+    { path: '/jewerly', element: <Home /> },
+    { path: '/electronics', element: <Home /> },
     { path: '/my-account', element: <MyAccount /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
@@ -34,8 +39,10 @@ const App = () => {
     <ShopingCartProvider>
       <BrowserRouter>
         <Navbar />
+        <MobileMenu />
         <AppRoutes/>
         <CheckoutSideMenu />
+        <Floating />
         <Footer />
       </BrowserRouter>
     </ShopingCartProvider>

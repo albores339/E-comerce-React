@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 import Layout from "../../Components/Layout"
 import { ShopingCartContext } from "../../Context"
 import OrderCard from "../../Components/OrderCard"
-import { ChevronLeftIcon } from "@heroicons/react/24/solid"
-
+import { ChevronDoubleLeftIcon } from "@heroicons/react/24/solid"
+import "./styles.css"
 
 function MyOrder() {
     const context = useContext(ShopingCartContext)
@@ -16,14 +16,14 @@ function MyOrder() {
     return (
     <Layout>
         <div className="flex mt-10 items-center">
-        <Link to="/my-orders">
+        <Link className="flex" to="/my-orders">
             <div className="flex flex-row items-center cursor-pointer">
-                <ChevronLeftIcon className="h-6 w-6"/>
+                <ChevronDoubleLeftIcon className="h-8 w-8 shaky-button text-lime-500"/>
+            </div>
+            <div>
+                My Order
             </div>
         </Link>  
-        <div>
-          My Order
-        </div>
       </div>
 
     <div className="flex flex-col w-full sm:w-2/5">

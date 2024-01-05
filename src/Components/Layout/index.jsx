@@ -1,9 +1,13 @@
+import { useContext } from "react"
+import { ShopingCartContext } from "../../Context"
 
 const Layout = ( { children } ) => {
+    const context = useContext(ShopingCartContext)
     return (
-        <div className="flex flex-col items-center mt-6 md:mb-72 text-stone-700 font-bold text-lg min-h-full">
+        <div className={`${context.searchByCategory === null ? "mb-10" : "sm:mb-72"} flex flex-col items-center mt-10 text-stone-700 font-bold text-lg`}>
             { children }
         </div>
+        
     )
 }
 

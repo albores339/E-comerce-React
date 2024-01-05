@@ -1,0 +1,11 @@
+  .shaky-button {
+    animation: shaky 1s ease-in-out infinite;
+  }
+
+  /* Definir la animación */
+  @keyframes shaky {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+  }

@@ -7,6 +7,7 @@ const Card = ( data ) => {
     const context = useContext(ShopingCartContext)
 
     const showProduct = (productDetail) => {
+        context.reStartLeft()
         context.openProductDetail()
         context.setProductToShow(productDetail)
     }

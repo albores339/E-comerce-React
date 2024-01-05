@@ -12,7 +12,7 @@ const OrdersCard = props => {
                     <span className="font-light flex gap-2"><ShoppingBagIcon className="h-6 w-6"/>{totalProducts} articles</span>
                 </div>
                 
-                <span className="flex  items-center font-medium text-2xl">${totalPrice} <ChevronDoubleRightIcon className="animate-ping text-lime-500 w-6 h-6"/></span>
+                <span className="flex  items-center font-medium text-2xl">${totalPrice} <ChevronDoubleRightIcon className="shaky-button text-lime-500 w-8 h-8"/></span>
             </p>
         </div>
     )

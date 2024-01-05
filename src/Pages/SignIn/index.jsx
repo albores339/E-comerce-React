@@ -3,7 +3,10 @@ import Layout from "../../Components/Layout"
 function SignIn() {
     return (
     <Layout>
-      Sign In
+      <div className="mt-8">
+        Sign In
+      </div>
+      
     </Layout>
       )
   }

@@ -1,88 +1,90 @@
 import { useContext } from "react"
 import { NavLink } from "react-router-dom"
-import { ShoppingCartIcon, Bars3Icon, CubeIcon, CogIcon } from "@heroicons/react/24/solid"
-import { ShopingCartContext } from "../../Context"
+import { CogIcon, XMarkIcon, CubeIcon } from "@heroicons/react/24/solid"
+import { ShopingCartContext } from "../../../Context"
 
-const Navbar = () => {
+const MobileMenu = () => {
     const context = useContext(ShopingCartContext)
     const activeStyle = "underline underline-offset-4"
     
     return (
-        <nav id="nav" className="bg-sky-500/90 backdrop-blur-md text-white flex justify-between items-center fixed z-10 top-0 w-full py-2.5 px-8 text-sm font-light">
-            <ul className="flex sm:hidden w-8 h-8 text-white"
-            onClick={context.openMobileMenu}>
-                <li className="flex sm:hidden w-8 h-8 text-white">
-                    <Bars3Icon />
-                </li>
-            </ul>
-            <ul className="flex items-center gap-3">
-                <li className="font-semibold text-lg">
+        <nav className={`${context.isMobileMenuOpen ? "flex" : "hidden"} sm:hidden bg-sky-600/90 backdrop-blur-md text-white flex flex-col fixed z-10 top-0 w-full h-full py-10 px-8 gap-4 font-bold text-2xl`}>
+            <XMarkIcon className="absolute top-6 right-6 h-8 w-8" onClick={context.closeMobileMenu} />
+            <ul className="flex flex-col gap-3">
+                <li className="">
                     <NavLink 
-                        to='/'
-                        onClick={() => context.setSearchByCategory(null)}>
-                        Shopi
+                        to='/all'
+                        className={({ isActive })=>
+                            isActive ? activeStyle : undefined
+                        }
+                        onClick={() => {context.setSearchByCategory(), context.closeMobileMenu()}} >
+                        All
                     </NavLink>
                 </li>
-                <li className="hidden sm:block">
+                <li className="">
                     <NavLink 
                         to='/clothes'
                         className={({ isActive })=>
                             isActive ? activeStyle : undefined
                         }
-                        onClick={() => context.setSearchByCategory("men's clothing")} >
+                        onClick={() => {context.setSearchByCategory("men's clothing"), context.closeMobileMenu()}} >
                         Clothes
                     </NavLink>
                 </li>
-                <li className="hidden sm:block">
+                <li className="">
                     <NavLink 
                         to='/electronics'
                         className={({ isActive })=>
                                 isActive ? activeStyle : undefined
                         } 
-                        onClick={() => context.setSearchByCategory("electronics")}>
+                        onClick={() => {context.setSearchByCategory("electronics"), context.closeMobileMenu()}}>
                         Electronics
                     </NavLink>
                 </li>
-                <li className="hidden sm:block">
+                <li className="">
                     <NavLink 
                         to='/jewerly'
                         className={({ isActive })=>
                                 isActive ? activeStyle : undefined
                         } 
-                        onClick={() => context.setSearchByCategory("jewelery")}>
-                        Jewelery
+                        onClick={() => {context.setSearchByCategory("jewelery"), context.closeMobileMenu()}}>
+                        Jewerly
                     </NavLink>
                 </li>
             </ul>
 
-            <ul className="flex items-center gap-3">
-                <li className="text-white/60 hidden lg:block">
+            <hr className="my-4"/>
+
+            <ul className="flex flex-col gap-3">
+                <li className="text-white/60"
+                onClick={context.closeMobileMenu}>
                         jalbores339@gmail.com
                 </li>
-                <li className="hidden sm:block">
+                <li className="">
                     <NavLink 
                         to='/my-orders'
                         className={({ isActive })=>
                             isActive ? activeStyle : undefined
-                        } >
+                        } onClick={context.closeMobileMenu}>
                         <p className="flex items-center gap-1">
-                            <CubeIcon className="h-4 w-4 text-white" mx-1 /> My Orders
+                            <CubeIcon className="h-6 w-6 text-white" mx-1 /> My Orders
                         </p>
                     </NavLink>
                 </li>
-                <li className="hidden sm:block">
+                <li className="">
                     <NavLink 
                         to='/my-account'
                         className={({ isActive })=>
                             isActive ? activeStyle : undefined
-                        } >
+                        } 
+                        onClick={context.closeMobileMenu}>
                         <p className="flex items-center gap-1">
-                            <CogIcon className="h-4 w-4 text-white" mx-1 /> My Account
+                            <CogIcon className="h-6 w-6 text-white" mx-1 /> My Account
                         </p>
-                        
                     </NavLink>
                 </li>
-                <li className="hidden sm:block">
+                <li className=""
+                onClick={context.closeMobileMenu}>
                     <NavLink 
                         to='/sign-in'
                         className={({ isActive })=>
@@ -91,12 +93,9 @@ const Navbar = () => {
                         Sing In
                     </NavLink>
                 </li>
-                <li className={`${context.isCheckoutSideMenuOpen ? " " : "animate-pulse "}flex flex-row items-center cursor-pointer`} onClick={context.openCheckoutSideMenu}>
-                    <ShoppingCartIcon class="h-8 w-8 text-white mx-1" />{context.count}
-                </li>
             </ul>
         </nav>
     )
 }
 
-export default Navbar 
+export default MobileMenu 

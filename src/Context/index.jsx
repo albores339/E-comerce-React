@@ -4,41 +4,96 @@ export const ShopingCartContext = createContext()
 
 export const ShopingCartProvider = ({children}) => {
     const [count, setCount] = useState(0)
+    
+  // Get products
+  const [items, setItems] = useState(null)
+  const [filteredItems, setFilteredItems] = useState(null)
 
-    // Get Products
-    const [items, setItems] = useState(null) 
-    const [filteredItems, setFilteredItems] = useState(null) 
+  // Get products by title
+  const [searchByTitle, setSearchByTitle] = useState(null)
 
-    useEffect(() => {
-      fetch('https://fakestoreapi.com/products')
-      .then(response => response.json())
-      .then(data => setItems(data))
-    }, [])
+  // Get products by category
+  const [searchByCategory, setSearchByCategory] = useState(null)
 
-    // Get Products
-    const [searchByTitle, setSearchByTitle] = useState(null) 
-    console.log(searchByTitle)
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+    .then(response => response.json())
+    .then(data => setItems(data))
+  }, [])
 
-    const filteredItemsByTitle = (items, searchByTitle) => {
-        return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+  const filteredItemsByTitle = (items, searchByTitle) => {
+    return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+  }
+
+  const filteredItemsByCategory = (items, searchByCategory) => {
+    return items?.filter(item => item.category.toLowerCase().includes(searchByCategory.toLowerCase()))
+  }
+
+  const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
+    if (searchType === 'BY_TITLE') {
+      return filteredItemsByTitle(items, searchByTitle)
     }
 
-    useEffect(() => {
-        if (searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
-    }, [items, searchByTitle])
+    if (searchType === 'BY_CATEGORY') {
+      return filteredItemsByCategory(items, searchByCategory)
+    }
 
-        console.log("filteredItems: ", filteredItems)
+    if (searchType === 'BY_TITLE_AND_CATEGORY') {
+      return filteredItemsByCategory(items, searchByCategory).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+    }
+
+    if (!searchType) {
+      return items ? items.slice(0, 6) : [];
+    }
+  }
   
+  useEffect(() => {
+    console.log("items: ", items)
+    console.log(searchByCategory)
+    if (searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searchByCategory))
+    if (searchByTitle && !searchByCategory) setFilteredItems(filterBy('BY_TITLE', items, searchByTitle, searchByCategory))
+    if (!searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory))
+    if (!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
+  }, [items, searchByTitle, searchByCategory])
 
     // Product Detail - Open/Close
     const [isProductDetailOpen, setIsProducDetailOpen] = useState(false)
     const openProductDetail = () => setIsProducDetailOpen(true)
     const closeProductDetail = () => setIsProducDetailOpen(false)
 
+    // Product Detail - Only Left
+    const [left, setLeft] = useState(17);
+    const reStartLeft = () => {
+      setLeft(17)
+    }
+
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        setLeft((prevCount) => {
+          if (prevCount === 10) {
+            return prevCount - 1;
+          }if (prevCount > 2) {
+            return prevCount - 1;
+          } else {
+            clearInterval(intervalId);
+            return prevCount;
+          }
+        });
+      }, 5000);
+    
+        return () => clearInterval(intervalId);
+      }, []); 
+    
+  
     // Checkout Side Menu - Open/Close
     const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
     const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
     const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
+
+    // Mobile Menu - Open/Close
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const openMobileMenu = () => setIsMobileMenuOpen(true)
+    const closeMobileMenu = () => setIsMobileMenuOpen(false)
 
     // Product Detail - Show product
 
@@ -69,10 +124,19 @@ export const ShopingCartProvider = ({children}) => {
         setOrder,
         items,
         setItems,
+        filteredItems,
+        setFilteredItems,
         searchByTitle,
         setSearchByTitle,
-        filteredItems,
-        setFilteredItems
+        searchByCategory,
+        setSearchByCategory,
+        left,
+        setLeft,
+        reStartLeft,
+        isMobileMenuOpen,
+        setIsMobileMenuOpen,
+        openMobileMenu,
+        closeMobileMenu
         }}>
         {children}
         </ShopingCartContext.Provider>
