@@ -45,8 +45,8 @@ const CheckoutSideMenu = () => {
             )
         } else {
             return (
-                <div className="flex flex-col h-full">
-                    <div className="overflow-y-scroll flex-1">
+                <div className="flex flex-col overflow-y-scroll">
+                    <div className="flex-1">
                         {
                             context.cartProducts.map((product, index) =>(< OrderCard 
                                 key={product.id}
@@ -65,7 +65,7 @@ const CheckoutSideMenu = () => {
                         <span className=" font-bold text-xl px-4">${totalPrice(context.cartProducts).toFixed(2)}</span>
                     </p>
                     <Link to="/my-orders/last">
-                    <button className="bg-lime-500 my-4 text-white rounded-lg flex flex-row p-2 gap-3 justify-center w-full" onClick={handdleCheckout}><BanknotesIcon className="w-5 h-6" />Checkout</button>
+                    <button className="bg-lime-500 my-4 mb-10 text-white rounded-lg flex flex-row p-2 gap-3 justify-center w-full" onClick={handdleCheckout}><BanknotesIcon className="w-5 h-6" />Checkout</button>
                     </Link>
                 </div>
         </div>

@@ -8,19 +8,9 @@ const MobileMenu = () => {
     const activeStyle = "underline underline-offset-4"
     
     return (
-        <nav className={`${context.isMobileMenuOpen ? "flex" : "hidden"} sm:hidden bg-sky-600/90 backdrop-blur-md text-white flex flex-col fixed z-10 top-0 w-full h-full py-10 px-8 gap-4 font-bold text-2xl`}>
+        <nav className={`${context.isMobileMenuOpen ? "flex" : "hidden"} sm:hidden bg-sky-600/90 backdrop-blur-md text-white flex flex-col fixed z-20 top-0 w-full h-full py-10 px-8 gap-4 font-bold text-2xl`}>
             <XMarkIcon className="absolute top-6 right-6 h-8 w-8" onClick={context.closeMobileMenu} />
             <ul className="flex flex-col gap-3">
-                <li className="">
-                    <NavLink 
-                        to='/all'
-                        className={({ isActive })=>
-                            isActive ? activeStyle : undefined
-                        }
-                        onClick={() => {context.setSearchByCategory(), context.closeMobileMenu()}} >
-                        All
-                    </NavLink>
-                </li>
                 <li className="">
                     <NavLink 
                         to='/clothes'

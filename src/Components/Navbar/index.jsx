@@ -16,7 +16,7 @@ const Navbar = () => {
                 </li>
             </ul>
             <ul className="flex items-center gap-3">
-                <li className="font-semibold text-lg">
+                <li className="font-semibold text-2xl">
                     <NavLink 
                         to='/'
                         onClick={() => context.setSearchByCategory(null)}>
@@ -91,8 +91,8 @@ const Navbar = () => {
                         Sing In
                     </NavLink>
                 </li>
-                <li className={`${context.isCheckoutSideMenuOpen ? " " : "animate-pulse "}flex flex-row items-center cursor-pointer`} onClick={context.openCheckoutSideMenu}>
-                    <ShoppingCartIcon class="h-8 w-8 text-white mx-1" />{context.count}
+                <li className={`${context.isCheckoutSideMenuOpen ? " " : "animate-pulse "}flex flex-row items-center cursor-pointer text-xl`} onClick={context.openCheckoutSideMenu}>
+                    <ShoppingCartIcon class="h-8 w-8 text-white mx-1" />{context.cartProducts?.length}
                 </li>
             </ul>
         </nav>

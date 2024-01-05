@@ -65,7 +65,7 @@ const addProductsToCart = (productAdd) => {
                 </figure>
 
                 <p className="flex flex-col object-center font-normal mx-8 mb-8 w-4/5 md:w-3/5 gap-2">
-                    <span className="font-bold text-4xl">{context.productToShow.title}</span>
+                    <span className="font-bold text-3xl">{context.productToShow.title}</span>
                     <div className="flex flex-row">
                         {renderStars()}
                         <span className="mx-4  flex flex-row items-center gap-1">{context.productToShow.rating.count} <UserIcon className="h-4 w-4 text-stone-700"/></span>
